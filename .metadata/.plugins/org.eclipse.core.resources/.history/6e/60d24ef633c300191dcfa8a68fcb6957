@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Data_gov">
+	<http uri-template="https://api.data.gov.in/resource/45587220-161a-4e47-9069-d9f8b3ac140a?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&amp;format=json&amp;offset=0&amp;limit=10" method="get">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

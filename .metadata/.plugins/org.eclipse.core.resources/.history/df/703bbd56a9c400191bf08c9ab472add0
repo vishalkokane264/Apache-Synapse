@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="YelnoCSVProcessor" startOnLoad="true" transports="http https vfs" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <smooks config-key="smooks-config">
+                <input type="text"/>
+                <output type="xml"/>
+            </smooks>
+            <log level="full"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.PollInterval">5</parameter>
+    <parameter name="transport.vfs.FileURI">file:/Users/vishalkokane/inner</parameter>
+    <parameter name="transport.vfs.ContentType">text/plain</parameter>
+    <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
+    <parameter name="transport.vfs.MoveAfterFailure">file:/Users/vishalkokane/failure</parameter>
+    <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
+    <parameter name="transport.vfs.FileNamePattern">.*.csv</parameter>
+    <parameter name="transport.vfs.MoveAfterProcess">file:/Users/vishalkokane/outer</parameter>
+</proxy>

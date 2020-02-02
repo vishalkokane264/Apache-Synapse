@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/sqlrest" name="sqlrestAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" protocol="http" uri-template="https://api.data.gov.in/resource/3e054572-22bd-4469-9e0d-2f5c342b4dc8?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b">
+        <inSequence>
+            <log level="full"/>
+            <send>
+                <endpoint>
+                    <http uri-template="https://api.data.gov.in/resource/3e054572-22bd-4469-9e0d-2f5c342b4dc8?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b"/>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

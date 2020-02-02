@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/sqlrest" name="sqlrestAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" protocol="http" uri-template="/CUSTOMER/{id}">
+        <inSequence>
+            <log level="full"/>
+            <send>
+                <endpoint>
+                    <http method="get" uri-template="http://www.thomas-bayer.com/sqlrest/CUSTOMER/{uri.var.id}"/>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

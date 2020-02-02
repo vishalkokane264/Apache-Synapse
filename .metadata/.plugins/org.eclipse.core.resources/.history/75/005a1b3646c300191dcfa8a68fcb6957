@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="DownloadService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+            <send>
+                <endpoint>
+                    <http method="get" uri-template="https://api.data.gov.in/resource/45587220-161a-4e47-9069-d9f8b3ac140a?api-key=579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&amp;amp;format=json&amp;amp;offset=0&amp;amp;limit=10"/>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <property name="OUT_ONLY" scope="default" type="STRING" value=""/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

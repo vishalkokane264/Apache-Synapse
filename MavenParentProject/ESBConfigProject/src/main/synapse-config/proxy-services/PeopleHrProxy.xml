@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PeopleHrProxy" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence onError="faultHandlerSeq">
+            <peoplehr.query configKey="peopleauth">
+                <queryName>Retrieve Employee Info</queryName>
+            </peoplehr.query>
+            <iterate continueParent="true" expression="//jsonObject/Result" id="MyIterator" sequential="true" xmlns:ns="http://org.apache.synapse/xsd">
+                <target>
+                    <sequence>
+                        <log level="full"/>
+                        <publishEvent async="true">
+                            <eventSink>DAS_EVENT_SINK</eventSink>
+                            <streamName>PeopleEventStream</streamName>
+                            <streamVersion>1.0.3</streamVersion>
+                            <attributes>
+                                <meta/>
+                                <correlation/>
+                                <payload>
+                                    <attribute defaultValue="" expression="//*[local-name()='Employee Id']/text()" name="EmployeeId" type="STRING"/>
+                                    <attribute defaultValue="" expression="//*[local-name()='First Name']/text()" name="FirstName" type="STRING"/>
+                                    <attribute defaultValue="" expression="//*[local-name()='Last Name']/text()" name="LastName" type="STRING"/>
+                                </payload>
+                                <arbitrary/>
+                            </attributes>
+                        </publishEvent>
+                        <log>
+                            <property expression="//*[local-name()='First Name']/text()" name="FirstName"/>
+                        </log>
+                    </sequence>
+                </target>
+            </iterate>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Peopleauth" groupId="com.example.ESBConfigProject.local-entry" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/Peopleauth.xml</file>
+    </artifact>
+</artifacts>

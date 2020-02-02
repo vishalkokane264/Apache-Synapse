@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/default" name="GovAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <property expression="$url:system" name="SYSTEM" scope="default" type="STRING"/>
+            <property expression="$url:user" name="USER" scope="default" type="STRING"/>
+            <property expression="$url:otp" name="OTP" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="get-property('SYSTEM')" name="value-system"/>
+                <property expression="get-property('USER')" name="value-user"/>
+                <property expression="get-property('OTP')" name="value-otp"/>
+            </log>
+            <property name="uri.var.urls" scope="default" type="STRING" value="/user-administration-ws/authenticate?param=test"/>
+            <property expression="$trp:username" name="uri.var.user" scope="default" type="STRING"/>
+            <property expression="$trp:password" name="uri.var.password" scope="default" type="STRING"/>
+            <call/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

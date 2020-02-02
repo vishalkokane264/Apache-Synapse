@@ -1,0 +1,5 @@
+<data name="Excel">
+    <config id="dss">
+        <property name="excel_datasource">/home/amal/Desktop/EmployeeList.xls</property>
+    </config>
+</data>

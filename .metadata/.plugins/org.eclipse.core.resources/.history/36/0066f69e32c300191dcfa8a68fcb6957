@@ -1,0 +1,9 @@
+<data name="EXCEL" serviceNamespace="" serviceGroup="">
+    <description/>
+    <config id="Excel_db">
+        <property name="org.wso2.ws.dataservice.user">vishalkokane</property>
+        <property name="org.wso2.ws.dataservice.password">Vishal@123</property>
+        <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://localhost:3306/EXCEL</property>
+        <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
+    </config>
+</data>
